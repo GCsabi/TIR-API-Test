@@ -1,0 +1,6148 @@
+{
+	"info": {
+		"_postman_id": "070a5200-ce48-4099-a838-1b3469b6ae98",
+		"name": "API spec for Project T.I.R.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30537192",
+		"_collection_link": "https://teszteljuk-le.postman.co/workspace/My-Workspace~58e530d8-3bc5-4cf9-8da3-16ed731fd575/collection/30342526-070a5200-ce48-4099-a838-1b3469b6ae98?action=share&source=collection_link&creator=30537192"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Reg_Invalid_Email_multiple@_signs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"    \r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"#@%^%#$@#$@#.com\",\n    \"password\": \"helloworlD1.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Invalid_Email_numbers_ending",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"first.last@example.123\",\n    \"password\": \"helloworlD1.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Invalid_Email_noName_noType_noEnd",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \" @ . \",\n    \"password\": \"helloworlD1.\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Invalid_Email_noName",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"@gmail.com\",\n    \"password\": \"helloworld\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Invalid_Email_noType",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"first.last@.com\",\n    \"password\": \"helloworld\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Invalid_Email_noEnd",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"#&@bnm\",\n    \"password\": \"helloworld\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Empty_Email_null",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"\",\n    \"password\": \"helloworldD1@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Empty_Email_space",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \" \",\n    \"password\": \"helloworldD1@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Empty_Email_NBSP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \" \",\n    \"password\": \"helloworldD1@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Empty_Email_space+NBSP",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"  \",\n    \"password\": \"helloworldD1@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Password_validation_missing_special_char",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"helloworlD1\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Password_validation_missing_uppercase",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"helloworl1.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Password_validation_missing_number",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"helloworlD..\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Password_validation_missing_lowercase",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"HELLOWORLlD..\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Password_validation_length_9_char",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"hellow1D.\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Password_validation_lenght_8_char",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"hellow1D.\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Password_validation_lenght_0_char",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"          \"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Password_validation_NBSP_only",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"          \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Password_validation_spaces_after&before",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"  Hell2!  \"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Invalid_Formatting_JSON",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"invalid JSON\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\"\n    \"password\": \"helloworlD1.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Empty_Password_and_Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"\",\n    \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Escape_character_test_v1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololo@test.hu\",\n    \"password\": \"1r#drop tables#\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Escape_character_test_v2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololol@testr#valami#.hu\",\n    \"password\": \"helloworlD1.\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Escape_character_test_v3",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololol\\@test.hu\",\n    \"password\": \"helloworlD1.`\"\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Empty_Password",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Handling_+_character_in_emails",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail address\");\r",
+									"    \r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trolol_+01@test.hu\",\n    \"password\": \"helloworlD1.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Successful",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"registeredUserId\", response.id);\r",
+									"pm.environment.set(\"registeredApiKey\", response.apiKey);\r",
+									"pm.environment.set(\"registeredEmail\", response.email);\r",
+									"pm.environment.set(\"registeredUserRole\", response.role);\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"helloworlD1.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_With_Already_Registered_Email",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"E-mail already exists\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"BAD_REQUEST\")\r",
+									"})\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{registeredEmail}}\",\n    \"password\": \"helloworlD1.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Login user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"tes23t22dasdaas72@codeyard.eu\",\n    \"password\": \"Hellow0rld*\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/login",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "SQL injection",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"' OR '1'='1\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/login",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:56:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 422,\n    \"type\": \"UNPROCESSABLE_ENTITY\",\n    \"message\": \"Invalid e-mail or password\"\n}"
+						},
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"helloworlD1.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/login",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"test@codeyard.eu\",\n    \"fullName\": \"Imre Ujlaki\",\n    \"bio\": \"Lorem ipsum dolor sit amet\",\n    \"apiKey\": \"72jmsx9K38aspl23mfv7031ky=*\",\n    \"role\": \"MEMBER\"\n}"
+						},
+						{
+							"name": "Wrong credentials",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"helloworlDdfd1.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/login",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:56:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 422,\n    \"type\": \"UNPROCESSABLE_ENTITY\",\n    \"message\": \"Invalid e-mail or password\"\n}"
+						},
+						{
+							"name": "Email already exists",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld1D.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users",
+									"host": [
+										"{{server}}users"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "content-type",
+									"value": "application/json"
+								},
+								{
+									"key": "content-length",
+									"value": "188"
+								},
+								{
+									"key": "date",
+									"value": "Mon, 16 Oct 2023 12:34:40 GMT"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"type\": \"BAD_REQUEST\",\n    \"message\": \"The password must be at least 10 characters, must contain numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\"\n}"
+						},
+						{
+							"name": "New Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/login",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"test@codeyard.eu\",\n    \"fullName\": \"Imre Ujlaki\",\n    \"bio\": \"Lorem ipsum dolor sit amet\",\n    \"apiKey\": \"72jmsx9K38aspl23mfv7031ky=*\",\n    \"role\": \"MEMBER\"\n}"
+						},
+						{
+							"name": "Changed Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/login",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"test@codeyard.eu\",\n    \"fullName\": \"Imre Ujlaki\",\n    \"bio\": \"Lorem ipsum dolor sit amet\",\n    \"apiKey\": \"72jmsx9K38aspl23mfv7031ky=*\",\n    \"role\": \"MEMBER\"\n}"
+						},
+						{
+							"name": "Old Email",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/login",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:56:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 422,\n    \"type\": \"UNPROCESSABLE_ENTITY\",\n    \"message\": \"Invalid e-mail or password\"\n}"
+						},
+						{
+							"name": "Old Password",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/login",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:56:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 422,\n    \"type\": \"UNPROCESSABLE_ENTITY\",\n    \"message\": \"Invalid e-mail or password\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Login_Unregistered_User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail or password\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"UNPROCESSABLE_ENTITY\")\r",
+									"})"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{$randomEmail}}\",\n    \"password\": \"12RandomP@ssword\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/login",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_Registered_User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"var expectedUserId = pm.environment.get(\"registeredUserId\");\r",
+									"var expectedEmail = pm.environment.get(\"registeredEmail\");\r",
+									"var expectedUserRole = pm.environment.get(\"registeredUserRole\");\r",
+									"var registeredApiKey = pm.environment.get(\"registeredApiKey\"); \r",
+									"var loginApiKey = response.apiKey;\r",
+									"\r",
+									"//decoding the ApiKeys\r",
+									"var decodedLoginApiKey = atob(loginApiKey.split(\".\")[1]);\r",
+									"var decodedRegisteredApiKey = atob(registeredApiKey.split(\".\")[1]);\r",
+									"\r",
+									"pm.test(\"Checking apiKey(sub)\", function () {\r",
+									"    pm.expect(JSON.parse(decodedLoginApiKey).sub).to.equal(JSON.parse(decodedRegisteredApiKey).sub);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Checking the RegisteredUserId\", function () {\r",
+									"    pm.expect(response.id).to.equal(expectedUserId);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Checking the RegisteredUserEmail\", function () {\r",
+									"    pm.expect(response.email).to.equal(expectedEmail);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Checking the RegisteredUserRole\", function () {\r",
+									"    pm.expect(response.role).to.equal(expectedUserRole);\r",
+									"});\r",
+									"\r",
+									"\r",
+									"//TODO checking the apiKey\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{registeredEmail}}\",\n    \"password\": \"helloworlD1.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/login",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_Wrong_Password_Less_10_char",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 422\", () => {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail or password\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"UNPROCESSABLE_ENTITY\")\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{registeredEmail}}\",\n    \"password\": \"hell\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/login",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_Wrong_Password_No_Spec_Char",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 422\", () => {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail or password\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"UNPROCESSABLE_ENTITY\")\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{registeredEmail}}\",\n    \"password\": \"hellobelloEe12\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/login",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_Wrong_Password_No_Uppercase",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 422\", () => {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail or password\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"UNPROCESSABLE_ENTITY\")\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{registeredEmail}}\",\n    \"password\": \"hellobello12@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/login",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_Wrong_Password_No_Num",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 422\", () => {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"ErrorMessage\", () => {\r",
+									"    pm.expect(response.message).to.eql(\"Invalid e-mail or password\");\r",
+									"})\r",
+									"\r",
+									"pm.test(\"ResponeBodyType\", () => {\r",
+									"    pm.expect(response.type).to.eql(\"UNPROCESSABLE_ENTITY\")\r",
+									"})\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{registeredEmail}}\",\n    \"password\": \"helloBellos@\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/login",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_SQL-injection v1",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.response.to.have.status(422);\r",
+									"});\r",
+									"\r",
+									"pm.test(\"Status code is 422\", function () {\r",
+									"    pm.expect(response.type).to.eql(\"UNPROCESSABLE_ENTITY\")\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"{{registeredEmail}}\",\n    \"password\": \"' OR 1=1--\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/login",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login_SQL-injection v2",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"checks response for WHERE clause sql injection\", function() {\r",
+									"   pm.expect(pm.response.text().toLowerCase()).to.not.include(\"error\")\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						},
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{server}}users/login?{{registeredEmail}}='+OR+1=1--",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"login"
+							],
+							"query": [
+								{
+									"key": "{{registeredEmail}}",
+									"value": "'+OR+1=1--"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Reg_Successful Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const response = pm.response.json();\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									"pm.environment.set(\"apiKey\", response.apiKey)\r",
+									"pm.environment.set(\"registeredEmail\", response.email)\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trolololololololoodjdfj@troller.hu\",\n    \"password\": \"helloworlD1.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users",
+							"host": [
+								"{{server}}users"
+							]
+						},
+						"description": "Create a user with the given e-mail address and password."
+					},
+					"response": []
+				},
+				{
+					"name": "Get user profile",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}users/me",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "x-access-token",
+										"value": "{{xAccessToken}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"helloworlD1.\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/me",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"test@codeyard.eu\",\n    \"bio\": \"Lorem ipsum dolor sit amet\",\n    \"fullName\": \"Imre Ujlaki\",\n    \"role\": \"MEMBER\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/me",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"me"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update user profile",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"test+1@codeyard.eu\",\n    \"bio\": \"Lorem ipsum dolor sit amet\",\n    \"fullName\": \"Imre Ujlaki\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/{{userId}}",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"{{userId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/{{userId}}",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"test+1@codeyard.eu\",\n    \"bio\": \"Lorem ipsum dolor sit amet\",\n    \"fullName\": \"Imre Ujlaki\",\n    \"role\": \"MEMBER\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/{{userId}}",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update user password",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"helloworld\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/{{userId}}/password",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"{{userId}}",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/{{userId}}/password",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}",
+										"password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"test+1@codeyard.eu\",\n    \"bio\": \"Lorem ipsum dolor sit amet\",\n    \"fullName\": \"Imre Ujlaki\",\n    \"role\": \"MEMBER\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/{{userId}}/password",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}",
+										"password"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						},
+						{
+							"name": "Password validation",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/{{userId}}/password",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}",
+										"password"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:56:02 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "110"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 422,\n    \"type\": \"UNPROCESSABLE_ENTITY\",\n    \"message\": \"The password must be at least 10 characters, contains numeric characters, minimum 1 uppercase letter [A-Z] and minimum 1 special character\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add role",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"role\": \"SUPERVISOR\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/{{userId}}/role",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"{{userId}}",
+								"role"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/{{userId}}/role",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}",
+										"role"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"email\": \"test+1@codeyard.eu\",\n    \"bio\": \"Lorem ipsum dolor sit amet\",\n    \"fullName\": \"Imre Ujlaki\",\n    \"role\": \"SUPERVISOR\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/{{userId}}/role",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}",
+										"role"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/{{userId}}/role",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}",
+										"role"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"type\": \"FORBIDDEN\",\n    \"message\": \"You don't have role to this action\"\n}"
+						},
+						{
+							"name": "Invalid role",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}users/{{userId}}/role",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}",
+										"role"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 400,\n    \"type\": \"BAD_REQUEST\",\n    \"message\": \"Invalid role\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete profile",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}users/{{userId}}",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"{{userId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/{{userId}}",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}users/{{userId}}",
+									"host": [
+										"{{server}}users"
+									],
+									"path": [
+										"{{userId}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						}
+					]
+				},
+				{
+					"name": "APIKeyAUth",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "key",
+									"value": "apiKey",
+									"type": "string"
+								},
+								{
+									"key": "value",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NTI2OTYwNzY5ODBiZDMyMTM2YWNkOTEiLCJpYXQiOjE2OTcwMjg3MjEsImV4cCI6MTY5NzYzMzUyMX0.oXrgvir865-N_WDVukcJ-mFenLY9Bx26f8YvkIchV8s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"helloworlD1.\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}users/me",
+							"host": [
+								"{{server}}users"
+							],
+							"path": [
+								"me"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Thematics",
+			"item": [
+				{
+					"name": "List thematics",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}thematics",
+							"host": [
+								"{{server}}thematics"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}thematics?page=0&limit=2",
+									"host": [
+										"{{server}}thematics"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"total\": 12,\n    \"items\": [\n        {\n            \"id\": \"64e45151ad2380605c5808eb\",\n            \"title\": \"Basic coding\",\n            \"progression\": {\n                \"topic_count\": 10,\n                \"completed_count\": 4,\n                \"avg_rate\": 3\n            }\n        },\n        {\n            \"id\": \"64e4516264e6cd877157a551\",\n            \"title\": \"Frontend development\",\n            \"progression\": {\n                \"topic_count\": 10,\n                \"completed_count\": 4,\n                \"avg_rate\": 3\n            }\n        }\n    ]\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}thematics",
+									"host": [
+										"{{server}}thematics"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						}
+					]
+				},
+				{
+					"name": "List topics for thematic",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}thematics/{{thematicId}}?page=0&limit=2",
+							"host": [
+								"{{server}}thematics"
+							],
+							"path": [
+								"{{thematicId}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success for user with SUPERVISOR and SYSTEM roles",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}?page=0&limit=2",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"total\": 12,\n    \"items\": [\n        {\n            \"id\": \"64e45149a1ff9bd6119fca9b\",\n            \"title\": \"Design patterns\",\n            \"rate\": 3,\n            \"explanation\": \"The design patterns in software development ....\" // only for SUPERVISORs\n        },\n        {\n            \"id\": \"64e4514d4f6fc9df69078925\",\n            \"title\": \"Version Control\",\n            \"rate\": 5,\n            \"explanation\": \"The factory design pattern a ....\" // only for SUPERVISORs\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success for user with MEMBER role",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}?page=0&limit=2",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"total\": 12,\n    \"items\": [\n        {\n            \"id\": \"64e45149a1ff9bd6119fca9b\",\n            \"title\": \"Design patterns\",\n            \"rate\": 3\n        },\n        {\n            \"id\": \"64e4514d4f6fc9df69078925\",\n            \"title\": \"Version control\",\n            \"rate\": 5\n        }\n    ]\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add thematic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Design patterns\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}thematics",
+							"host": [
+								"{{server}}thematics"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Design patterns\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}thematics",
+									"host": [
+										"{{server}}thematics"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"64e45149a1ff9bd6119fca9b\",\n    \"title\": \"Design patterns\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Design patterns\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}thematics",
+									"host": [
+										"{{server}}thematics"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Design patterns\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}thematics",
+									"host": [
+										"{{server}}thematics"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"type\": \"FORBIDDEN\",\n    \"message\": \"You don't have role to this action\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update thematic",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Design patterns\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}thematics/{{thematicId}}",
+							"host": [
+								"{{server}}thematics"
+							],
+							"path": [
+								"{{thematicId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Design patterns\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"64e45149a1ff9bd6119fca9b\",\n    \"title\": \"Design patterns\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Design patterns\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"title\": \"Design patterns\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"type\": \"FORBIDDEN\",\n    \"message\": \"You don't have role to this action\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete thematic",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}thematics/{{thematicId}}",
+							"host": [
+								"{{server}}thematics"
+							],
+							"path": [
+								"{{thematicId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"type\": \"FORBIDDEN\",\n    \"message\": \"You don't have role to this action\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Topics",
+			"item": [
+				{
+					"name": "List sub topics for topic",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}topics/{{topicId}}?page=0&limit=2",
+							"host": [
+								"{{server}}topics"
+							],
+							"path": [
+								"{{topicId}}"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "0"
+								},
+								{
+									"key": "limit",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success for user with SUPERVISOR and SYSTEM roles",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}topics/{{topicId}}/subs?page=0&limit=2",
+									"host": [
+										"{{server}}topics"
+									],
+									"path": [
+										"{{topicId}}",
+										"subs"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"total\": 12,\n    \"items\": [\n        {\n            \"id\": \"64e45149a1ff9bd6119fca9b\",\n            \"title\": \"Singleton\",\n            \"rate\": 3,\n            \"explanation\": \"The singleton design pattern a ....\" // only for SUPERVISORs\n        },\n        {\n            \"id\": \"64e4514d4f6fc9df69078925\",\n            \"title\": \"Factory\",\n            \"rate\": 5,\n            \"explanation\": \"The factory design pattern a ....\" // only for SUPERVISORs\n        }\n    ]\n}"
+						},
+						{
+							"name": "Success for user with MEMBER role",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}topics/{{topicId}}?page=0&limit=2",
+									"host": [
+										"{{server}}topics"
+									],
+									"path": [
+										"{{topicId}}"
+									],
+									"query": [
+										{
+											"key": "page",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"total\": 12,\n    \"items\": [\n        {\n            \"id\": \"64e45149a1ff9bd6119fca9b\",\n            \"title\": \"Singleton\",\n            \"rate\": 3\n        },\n        {\n            \"id\": \"64e4514d4f6fc9df69078925\",\n            \"title\": \"Factory\",\n            \"rate\": 5\n        }\n    ]\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Update topic",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"Design patterns\",\n    \"correction\": \"Please ....\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}topics/{{topicId}}",
+							"host": [
+								"{{server}}topics"
+							],
+							"path": [
+								"{{topicId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"correction\": \"Please ....\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}topics/{{topicId}}",
+									"host": [
+										"{{server}}topics"
+									],
+									"path": [
+										"{{topicId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"64e45149a1ff9bd6119fca9b\",\n    \"title\": \"Singleton\",\n    \"rate\": 3,\n    \"explanation\": \"The singleton design pattern a ....\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"correction\": \"Please ....\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}topics/{{topicId}}",
+									"host": [
+										"{{server}}topics"
+									],
+									"path": [
+										"{{topicId}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"correction\": \"Please ....\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}topics/{{topicId}}",
+									"host": [
+										"{{server}}topics"
+									],
+									"path": [
+										"{{topicId}}"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"type\": \"FORBIDDEN\",\n    \"message\": \"You don't have role to this action\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Add topic",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"A* algorithm\",\n    \"parentId\": \"{{topicId}}\" // Optional\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}thematics/{{thematicId}}/topics",
+							"host": [
+								"{{server}}thematics"
+							],
+							"path": [
+								"{{thematicId}}",
+								"topics"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"correction\": \"Please ....\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}/topics",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}",
+										"topics"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": \"64e45149a1ff9bd6119fca9b\",\n    \"title\": \"A* algorithm\",\n    \"rate\": 3,\n    \"explanation\": \"The A* algorithm is ....\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"A* algorithm\",\n    \"parentId\": \"{{topicId}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}/topics",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}",
+										"topics"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"name\": \"A* algorithm\",\n    \"parentId\": \"{{topicId}}\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}thematics/{{thematicId}}/topics",
+									"host": [
+										"{{server}}thematics"
+									],
+									"path": [
+										"{{thematicId}}",
+										"topics"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"type\": \"FORBIDDEN\",\n    \"message\": \"You don't have role to this action\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Delete topic",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{server}}topics/{{topicId}}",
+							"host": [
+								"{{server}}topics"
+							],
+							"path": [
+								"{{topicId}}"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}topics/{{topicId}}",
+									"host": [
+										"{{server}}topics"
+									],
+									"path": [
+										"{{topicId}}"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}topics/{{topicId}}",
+									"host": [
+										"{{server}}topics"
+									],
+									"path": [
+										"{{topicId}}"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						},
+						{
+							"name": "Forbidden",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "{{server}}topics/{{topicId}}",
+									"host": [
+										"{{server}}topics"
+									],
+									"path": [
+										"{{topicId}}"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 403,\n    \"type\": \"FORBIDDEN\",\n    \"message\": \"You don't have role to this action\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Exercises",
+			"item": [
+				{
+					"name": "Evaluate exercise",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "x-access-token",
+								"value": "{{xAccessToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"answer\": \"The singleton design pattern is a ...\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{server}}topic/{{topicId}}/exercises",
+							"host": [
+								"{{server}}topic"
+							],
+							"path": [
+								"{{topicId}}",
+								"exercises"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Success",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"answer\": \"The singleton design pattern is a ...\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}topic/{{topicId}}/exercises",
+									"host": [
+										"{{server}}topic"
+									],
+									"path": [
+										"{{topicId}}",
+										"exercises"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"rate\": 3,\n    \"explanation\": \"Good, but the singleton design patterns is ....\"\n}"
+						},
+						{
+							"name": "Unauthorized",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"answer\": \"The singleton design pattern is a ...\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{server}}topic/{{topicId}}/exercises",
+									"host": [
+										"{{server}}topic"
+									],
+									"path": [
+										"{{topicId}}",
+										"exercises"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Thu, 17 Aug 2023 05:48:11 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "164"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "x-srv-trace",
+									"value": "v=1;t=10585f4cd5f756fe"
+								},
+								{
+									"key": "x-srv-span",
+									"value": "v=1;s=a33f224c3528db5c"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "X-RateLimit-Limit",
+									"value": "120"
+								},
+								{
+									"key": "X-RateLimit-Remaining",
+									"value": "119"
+								},
+								{
+									"key": "X-RateLimit-Reset",
+									"value": "1692251351"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a4-7hO0T/XLq3TuFViTu2ZVQQdIY+A\""
+								},
+								{
+									"key": "Vary",
+									"value": "Accept-Encoding"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"code\": 401,\n    \"type\": \"UNAUTHORIZED\",\n    \"message\": \"Missing x-access-token header variable\"\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
