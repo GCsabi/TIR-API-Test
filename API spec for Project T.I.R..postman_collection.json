@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "070a5200-ce48-4099-a838-1b3469b6ae98",
+		"_postman_id": "ad6a101a-21b2-41d9-bbd2-bd6b42073a09",
 		"name": "API spec for Project T.I.R.",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "30537192",
-		"_collection_link": "https://teszteljuk-le.postman.co/workspace/My-Workspace~58e530d8-3bc5-4cf9-8da3-16ed731fd575/collection/30342526-070a5200-ce48-4099-a838-1b3469b6ae98?action=share&source=collection_link&creator=30537192"
+		"_exporter_id": "30342526",
+		"_collection_link": "https://teszteljuk-le.postman.co/workspace/58e530d8-3bc5-4cf9-8da3-16ed731fd575/collection/30342526-ad6a101a-21b2-41d9-bbd2-bd6b42073a09?action=share&source=collection_link&creator=30342526"
 	},
 	"item": [
 		{
@@ -42,7 +42,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"#@%^%#$@#$@#.com\",\n    \"password\": \"helloworlD1.\"\n}",
+							"raw": "{\n    \"email\": \"#@%^%#$@#$@##.com\",\n    \"password\": \"helloworlD1.\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -2449,15 +2449,6 @@
 										"type": "text"
 									}
 								],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"trololololollolololooo@test.hu\",\n    \"password\": \"helloworlD1.\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "{{server}}users/me",
 									"host": [
@@ -2529,15 +2520,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "{{server}}users/me",
 									"host": [
@@ -4896,15 +4878,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "{{server}}topics/{{topicId}}/subs?page=0&limit=2",
 									"host": [
@@ -4987,15 +4960,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "{{server}}topics/{{topicId}}?page=0&limit=2",
 									"host": [
@@ -5077,15 +5041,6 @@
 							"originalRequest": {
 								"method": "GET",
 								"header": [],
-								"body": {
-									"mode": "raw",
-									"raw": "{\n    \"email\": \"test@codeyard.eu\",\n    \"password\": \"helloworld\"\n}",
-									"options": {
-										"raw": {
-											"language": "json"
-										}
-									}
-								},
 								"url": {
 									"raw": "{{server}}thematics/{{thematicId}}",
 									"host": [
